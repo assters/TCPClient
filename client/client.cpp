@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#pragma comment(lib, "Ws2_32.lib")
 
 #include <WS2tcpip.h>
 
@@ -74,8 +75,8 @@ int main()
 	cout << "\n input str:" << endl;
 	cin >> str;
 
-	//send(m_socket, str, sizeof(str), 0);
-	int asa= recv(m_socket, str, 255, 0);
+	int asa = send(m_socket, str, sizeof(str), 0);
+	//int asa= recv(m_socket, str, 255, 0);
 	if (asa == SOCKET_ERROR)
 	{
 		printf("Error occured: %d\n", WSAGetLastError());
